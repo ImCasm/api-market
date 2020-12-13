@@ -19,7 +19,7 @@ public class PurchaseEntity {
     private Integer purchaseId;
 
     @Column(name = "id_cliente")
-    private String clientId;
+    private String customerId;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
@@ -32,7 +32,7 @@ public class PurchaseEntity {
     private Character paymentMethod;
 
     @Column(name = "comentario")
-    private String commentary;
+    private String comment;
 
     @Column(name = "estado")
     private Character state;
