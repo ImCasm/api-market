@@ -18,7 +18,7 @@ public class PurchaseEntity {
     @Column(name = "id_compra")
     private Integer purchaseId;
 
-    @Column(name = "id_cliente")
+    @Column(name = "id_cliente", length = 20)
     private String customerId;
 
     @ManyToOne
@@ -31,13 +31,13 @@ public class PurchaseEntity {
     @Column(name = "medio_pago")
     private Character paymentMethod;
 
-    @Column(name = "comentario")
+    @Column(name = "comentario", length = 300)
     private String comment;
 
     @Column(name = "estado")
     private Character state;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "purchase", cascade = {CascadeType.ALL})
     private List<ProductPurchaseEntity> purchaseProducts;
 
 }

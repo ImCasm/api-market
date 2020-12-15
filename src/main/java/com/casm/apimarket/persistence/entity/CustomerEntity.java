@@ -23,7 +23,7 @@ public class CustomerEntity {
     private String lastName;
 
     @Column(name = "celular")
-    private Integer cellPhoneNumber;
+    private Long cellPhoneNumber;
 
     @Column(name = "direccion", length = 80)
     private String address;

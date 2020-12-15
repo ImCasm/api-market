@@ -17,7 +17,7 @@ public class ProductPurchaseEntity {
     private ProductPurchasePK id;
 
     @Column(name = "cantidad")
-    private Integer cuantity;
+    private Integer quantity;
 
     @Column(precision = 2)
     private BigDecimal total;
@@ -26,6 +26,7 @@ public class ProductPurchaseEntity {
     private Boolean state;
 
     @ManyToOne
+    @MapsId("purchaseId")
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
     private PurchaseEntity purchase;
 

@@ -13,7 +13,7 @@ import java.util.List;
 public interface PurchaseMapper {
 
     @Mappings({
-        @Mapping(source = "purchaseProducts", target = "item"),
+        @Mapping(source = "purchaseProducts", target = "items")
     })
     Purchase toPurchase(PurchaseEntity purchase);
     List<Purchase> toPurchases(List<PurchaseEntity> purchases);
