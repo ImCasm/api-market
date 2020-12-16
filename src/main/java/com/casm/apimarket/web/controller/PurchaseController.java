@@ -1,5 +1,6 @@
 package com.casm.apimarket.web.controller;
 
+import com.casm.apimarket.domain.Product;
 import com.casm.apimarket.domain.Purchase;
 import com.casm.apimarket.domain.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class PurchaseController {
         this.purchaseService = purchaseService;
     }
 
-    @GetMapping(value = {"", "/{date}"})
-    public ResponseEntity<List<Purchase>> getAll(@PathVariable Optional<LocalDateTime> date) {
+    @GetMapping()
+    public ResponseEntity<List<Purchase>> getAll(@RequestParam Optional<LocalDateTime> date) {
         return date.map(localDateTime -> purchaseService.getByDate(localDateTime)
                 .map(purchases -> new ResponseEntity<>(purchases, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND)))
@@ -35,6 +36,12 @@ public class PurchaseController {
         return purchaseService.getByCustomer(customerId)
                 .map(purchases -> new ResponseEntity<>(purchases, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Purchase> getById(@PathVariable("id") int purchaseId) {
+        Purchase purchase = purchaseService.findById(purchaseId);
+        return purchase != null? new ResponseEntity<>(purchase, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping()

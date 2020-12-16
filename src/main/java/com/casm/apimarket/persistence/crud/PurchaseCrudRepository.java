@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface PurchaseCrudRepository extends CrudRepository<PurchaseEntity, Integer> {
     Optional<List<PurchaseEntity>> findByCustomerId(String customerId);
     Optional<List<PurchaseEntity>> findByDate(LocalDateTime date);
+    PurchaseEntity findByPurchaseId(int purchaseId);
 }

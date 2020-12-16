@@ -10,5 +10,6 @@ public interface IPurchaseRepository {
     List<Purchase> getAll();
     Optional<List<Purchase>> getByCustomer(String customerId);
     Optional<List<Purchase>> getByDate(LocalDateTime date);
+    Purchase getById(int purchaseId);
     Purchase save(Purchase purchase);
 }

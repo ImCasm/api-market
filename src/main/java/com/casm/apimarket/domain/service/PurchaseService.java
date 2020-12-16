@@ -31,6 +31,10 @@ public class PurchaseService {
         return purchaseRepository.getByDate(date);
     }
 
+    public Purchase findById(int purchaseId) {
+        return purchaseRepository.getById(purchaseId);
+    }
+
     public Purchase save(Purchase purchase) {
         return purchaseRepository.save(purchase);
     }

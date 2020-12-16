@@ -42,6 +42,11 @@ public class PurchaseRepository implements IPurchaseRepository {
     }
 
     @Override
+    public Purchase getById(int purchaseId) {
+        return purchaseMapper.toPurchase(purchaseCrudRepository.findByPurchaseId(purchaseId));
+    }
+
+    @Override
     public Purchase save(Purchase purchase) {
         System.out.println(purchase.getState());
         PurchaseEntity purchaseEntity = purchaseMapper.toPurchaseEntity(purchase);
